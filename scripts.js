@@ -120,7 +120,8 @@ function sendDataToServer(sender) {
         url: "https://apim.quickwork.co/ayyub/interview/v1/submitdata",
         data: sender.data,
         type: "POST",
-        beforeSend: function(xhr){xhr.setRequestHeader('apikey', 'm8bFhVGWZxPG97IZzkLLpUCPNkfPEZQC');},
+        //beforeSend: function(xhr){xhr.setRequestHeader('apikey', 'm8bFhVGWZxPG97IZzkLLpUCPNkfPEZQC');},
+        headers:{'apikey': 'm8bFhVGWZxPG97IZzkLLpUCPNkfPEZQC'},
         success: function(data) {
             alert(resultAsString)
         }
@@ -132,7 +133,8 @@ $(function(){
         url: "https://apim.quickwork.co/ayyub/interview/v1/fetchhobbies",
         data: {  },
         type: "GET",
-        beforeSend: function(xhr){xhr.setRequestHeader('apikey', 'm8bFhVGWZxPG97IZzkLLpUCPNkfPEZQC');},
+        //beforeSend: function(xhr){xhr.setRequestHeader('apikey', 'm8bFhVGWZxPG97IZzkLLpUCPNkfPEZQC');},
+        headers:{'apikey': 'm8bFhVGWZxPG97IZzkLLpUCPNkfPEZQC'},
         success: function(data) {
             var $ddl=$("#sq_103i");
             $ddl.html('');
