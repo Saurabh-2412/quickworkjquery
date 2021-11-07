@@ -9,6 +9,25 @@
     <link href="https://unpkg.com/survey-jquery/survey.min.css" type="text/css" rel="stylesheet"/>
     <head>
         <link rel="stylesheet" href="style.css">
+
+        <script>
+            var BASE_URL;
+            var WEBSITE_TOKEN;
+            (function(d,t) {
+                BASE_URL = 'https://chat.quickwork.co';
+                WEBSITE_TOKEN = 'P6stXqzSdsLbkdJSoHZQt6Ha';
+                var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+                g.src= BASE_URL + "/packs/js/sdk.js";
+                s.parentNode.insertBefore(g,s);
+                g.onload=function(){
+                    window.qwcSDK.run({
+                    websiteToken: WEBSITE_TOKEN,
+                    baseUrl: BASE_URL
+                    })
+                }
+            })(document,"script");
+        </script>
+    
     </head>
     <title>Registeration Page</title>
 </head>
@@ -17,4 +36,17 @@
     <div id="surveyContainer"></div>
 </body>
 <script src="scripts.js"></script>
+
+<!-- function generateOTP() {
+          
+    // Declare a digits variable
+    // which stores all digits
+    var digits = '0123456789';
+    let OTP = '';
+    for (let i = 0; i < 6; i++ ) {
+        OTP += digits[Math.floor(Math.random() * 10)];
+    }
+    return OTP;
+} -->
+
 </html>
