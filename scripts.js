@@ -116,14 +116,22 @@ $("#surveyContainer").Survey({model:survey});
 
 function sendDataToServer(sender) {
     var resultAsString = JSON.stringify(sender.data);
+    console.log(sender.data);
     $.ajax({
-        url: "https://apim.quickwork.co/ayyub/interview/v1/submitdata",
-        data: sender.data,
+        //url: "https://apim.quickwork.co/ayyub/interview/v1/submitdata",
+        url: "https://apim.quickwork.co/TeamQuickWork/EmployeesCheckpoint/0.0.1/EmployeesCheckpointRegister",
+        //data: sender.data,
+        data: {
+            "name":sender.data.name,
+            "gender":sender.data.gender,
+            "email":sender.data.email,
+        },
         type: "POST",
         //beforeSend: function(xhr){xhr.setRequestHeader('apikey', 'm8bFhVGWZxPG97IZzkLLpUCPNkfPEZQC');},
-        headers:{'apikey': 'm8bFhVGWZxPG97IZzkLLpUCPNkfPEZQC'},
+        headers:{ 'apikey': 'xIaqHangl6x3JD7X9yEQA0ksrpSi94B3' },
         success: function(data) {
-            alert(resultAsString)
+            console.log(data);
+            alert("Thank you for registeration. Following is your data : " + resultAsString + ".Please checkin with the QuickworkBot.");
         }
     });
 }
