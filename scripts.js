@@ -64,21 +64,44 @@ const surveyJSON =  {
                 },
                 {
                     "type": "dropdown",
-                    "name": "playingsubhobbies",
-                    "visibleIf": "{hobbies} = 'Playing Chess'",
+                    /*"name": "playingsubhobbies",
+                    "visibleIf": "{hobbies} = 'Playing Chess'",*/
+                    "name":"subhobbies",
                     "title": "Playing Sub Category",
                     "choices": [
                         {
+                            "visibleIf": "{hobbies} = 'Playing Chess'",
                             "value": "singleplayer",
                             "text": "Single Player"
                         },
                         {
+                            "visibleIf": "{hobbies} = 'Playing Chess'",
                             "value": "multiplayer",
                             "text": "Multi Player"
+                        },
+                        {
+                            "visibleIf": "{hobbies} = 'Reading'",
+                            "value": "blogs",
+                            "text": "Blogs"
+                        },
+                        {
+                            "visibleIf": "{hobbies} = 'Reading'",
+                            "value": "articles",
+                            "text": "Articles"
+                        },
+                        {
+                            "visibleIf": "{hobbies} = 'Writing'",
+                            "value": "newsletter",
+                            "text": "News Letter"
+                        },
+                        {
+                            "visibleIf": "{hobbies} = 'Writing'",
+                            "value": "content",
+                            "text": "Content"
                         }
                     ]
-                },
-                {
+                }
+                /*{
                     "type": "dropdown",
                     "name": "readingsubhobbies",
                     "visibleIf": "{hobbies} = 'Reading'",
@@ -110,7 +133,7 @@ const surveyJSON =  {
                             "text": "Content"
                         }
                     ]
-                }
+                }*/
             ]
         }
     ]
@@ -122,7 +145,7 @@ $("#surveyContainer").Survey({model:survey});
 
 function sendDataToServer(sender) {
     var resultAsString = JSON.stringify(sender.data);
-    console.log(resultAsString);
+
     $.ajax({
         //url: "https://apim.quickwork.co/ayyub/interview/v1/submitdata",
         url: "https://apim.quickwork.co/TeamQuickWork/EmployeesCheckpoint/0.0.1/EmployeesCheckpointRegister",
