@@ -13,6 +13,12 @@ const surveyJSON =  {
                 },
                 {
                     "type": "text",
+                    "name": "conversationId",
+                    "title": "Conversation ID",
+                    "isRequired": true
+                },
+                {
+                    "type": "text",
                     "name": "email",
                     "title": "E-mail-ID",
                     "isRequired": true
@@ -58,50 +64,50 @@ const surveyJSON =  {
                 },
                 {
                     "type": "dropdown",
-                    "name": "playingsubhobbies",
+                    "name": "subhobbies",
                     "visibleIf": "{hobbies} = 'Playing Chess'",
                     "title": "Playing Sub Category",
                     "choices": [
                         {
                             "value": "singleplayer",
-                            "text": "Single Player"
+                            "title": "Single Player"
                         },
                         {
                             "value": "multiplayer",
-                            "text": "Multi Player"
+                            "title": "Multi Player"
                         }
                     ]
                 },
                 {
                     "type": "dropdown",
-                    "name": "readingsubhobbies",
+                    "name": "subhobbies",
                     "visibleIf": "{hobbies} = 'Reading'",
                     "title": "Reading Sub Category",
                     "choices": [
                         {
                             "value": "blogs",
-                            "text": "Blogs"
+                            "title": "Blogs"
                         },
                         {
                             "value": "articles",
-                            "text": "Articles"
+                            "title": "Articles"
                         }
                     ]
                 },
                 {
                     "type": "dropdown",
-                    "name": "writingsubhobbies",
+                    "name": "subhobbies",
                     "isRequired": true,
                     "visibleIf": "{hobbies} = 'Writing'",
                     "title": "Writing Sub Category",
                     "choices": [
                         {
                             "value": "newsletter",
-                            "text": "News Letter"
+                            "title": "News Letter"
                         },
                         {
                             "value": "content",
-                            "text": "Content"
+                            "title": "Content"
                         }
                     ]
                 }
@@ -117,7 +123,7 @@ $("#surveyContainer").Survey({model:survey});
 function sendDataToServer(sender) {
     var resultAsString = JSON.stringify(sender.data);
     console.log(sender.data);
-    $.ajax({
+    /*$.ajax({
         //url: "https://apim.quickwork.co/ayyub/interview/v1/submitdata",
         url: "https://apim.quickwork.co/TeamQuickWork/EmployeesCheckpoint/0.0.1/EmployeesCheckpointRegister",
         //data: sender.data,
@@ -125,6 +131,7 @@ function sendDataToServer(sender) {
             "name":sender.data.name,
             "gender":sender.data.gender,
             "email":sender.data.email,
+            "hobbies":sender.data.hobbies
         },
         type: "POST",
         //beforeSend: function(xhr){xhr.setRequestHeader('apikey', 'm8bFhVGWZxPG97IZzkLLpUCPNkfPEZQC');},
@@ -133,7 +140,7 @@ function sendDataToServer(sender) {
             console.log(data);
             alert("Thank you for registeration. Following is your data : " + resultAsString + ".Please checkin with the QuickworkBot.");
         }
-    });
+    });*/
 }
 
 $(function(){
