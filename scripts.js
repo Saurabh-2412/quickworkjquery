@@ -13,12 +13,6 @@ const surveyJSON =  {
                 },
                 {
                     "type": "text",
-                    "name": "conversationId",
-                    "title": "Conversation ID",
-                    "isRequired": true
-                },
-                {
-                    "type": "text",
                     "name": "email",
                     "title": "E-mail-ID",
                     "isRequired": true
@@ -144,9 +138,14 @@ survey.onComplete.add(sendDataToServer);
 $("#surveyContainer").Survey({model:survey});
 
 function sendDataToServer(sender) {
-    var resultAsString = JSON.stringify(sender.data);
+    const urlParams = new URLSearchParams(window.location.search);
+    const conversationId = urlParams.get('id');
+    var newObject = Object.assign(sender.data,{"conversationId":conversationId});
+    console.log(newObject);
+    /*var resultAsString = JSON.stringify(sender.data);
+    console.log(sender.data);*/
 
-    $.ajax({
+    /*$.ajax({
         //url: "https://apim.quickwork.co/ayyub/interview/v1/submitdata",
         url: "https://apim.quickwork.co/TeamQuickWork/EmployeesCheckpoint/0.0.1/EmployeesCheckpointRegister",
         data: sender.data,
@@ -157,7 +156,7 @@ function sendDataToServer(sender) {
             console.log(data);
             alert("Thank you for registeration. Following is your data : " + resultAsString + ".Please checkin with the QuickworkBot.");
         }
-    });
+    });*/
 }
 
 $(function(){
@@ -168,7 +167,7 @@ $(function(){
         //beforeSend: function(xhr){xhr.setRequestHeader('apikey', 'm8bFhVGWZxPG97IZzkLLpUCPNkfPEZQC');},
         headers:{'apikey': 'm8bFhVGWZxPG97IZzkLLpUCPNkfPEZQC'},
         success: function(data) {
-            var $ddl=$("#sq_104i");
+            var $ddl=$("#sq_103i");
             $ddl.html('');
             $ddl.append("<option value='select'>select</option>")
             for(var i=0;i<data.hobbies.length;i++){
